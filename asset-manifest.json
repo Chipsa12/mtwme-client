@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/github.io/mtwme-client/static/css/main.4749cc0d.css",
+    "main.js": "/github.io/mtwme-client/static/js/main.66b08f8d.js",
+    "static/media/rain.jpg": "/github.io/mtwme-client/static/media/rain.d18495ebb1a798e3e187.jpg",
+    "static/media/Солнечная-погода.jpg": "/github.io/mtwme-client/static/media/Солнечная-погода.05f69b641fb072b01985.jpg",
+    "static/media/bgImg.jpg": "/github.io/mtwme-client/static/media/bgImg.1f8f7b96d421bbf1f36e.jpg",
+    "static/media/profileBg.jpg": "/github.io/mtwme-client/static/media/profileBg.9bbf008dd1bf232559e1.jpg",
+    "static/media/пасмурная_погода.jpg": "/github.io/mtwme-client/static/media/пасмурная_погода.2ce78897fab6ebacbd64.jpg",
+    "static/media/gg_menu-grid-o.svg": "/github.io/mtwme-client/static/media/gg_menu-grid-o.91ea403c59ebc3d1fba22c52aa7b1187.svg",
+    "static/media/btn-emoji.svg": "/github.io/mtwme-client/static/media/btn-emoji.d0c3835a0a540d7d2b21d7de6cb1360b.svg",
+    "static/media/heart-icon-not-activity.svg": "/github.io/mtwme-client/static/media/heart-icon-not-activity.0255b7174b061e045f3c3d3940b44d8f.svg",
+    "static/media/leftArrow.svg": "/github.io/mtwme-client/static/media/leftArrow.a5fed4fea354dfea0142.svg",
+    "static/media/heart.svg": "/github.io/mtwme-client/static/media/heart.a0e5dee4bc80b6b56f62899b78cf4c2d.svg",
+    "static/media/rightArrow.svg": "/github.io/mtwme-client/static/media/rightArrow.a5a4aedfc2111bab2407.svg",
+    "static/media/send-btn.svg": "/github.io/mtwme-client/static/media/send-btn.b9e167b7f4cbe2263cc22939a40fd132.svg",
+    "index.html": "/github.io/mtwme-client/index.html",
+    "static/media/btn-send-message.svg": "/github.io/mtwme-client/static/media/btn-send-message.5ea470f3c50dad12ca4de347219c3211.svg",
+    "static/media/btn-mic.svg": "/github.io/mtwme-client/static/media/btn-mic.b386a135fc6f50f1b194adc073216ed7.svg",
+    "static/media/cancel_btn.svg": "/github.io/mtwme-client/static/media/cancel_btn.03bed96e2a2d4463e3ad.svg",
+    "static/media/cancel_btn_hover.svg": "/github.io/mtwme-client/static/media/cancel_btn_hover.8abe0a5c87acab0af258.svg",
+    "main.4749cc0d.css.map": "/github.io/mtwme-client/static/css/main.4749cc0d.css.map",
+    "main.66b08f8d.js.map": "/github.io/mtwme-client/static/js/main.66b08f8d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4749cc0d.css",
+    "static/js/main.66b08f8d.js"
+  ]
+}
