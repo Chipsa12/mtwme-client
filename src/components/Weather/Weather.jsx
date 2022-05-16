@@ -13,7 +13,7 @@ const Weather = () => {
 
     useEffect(() => {
         dispatch(getDataWeather())
-    },[])
+    },[dispatch])
 
     const {cityName, forecast} = useSelector(state=>state.weather);
 
@@ -36,10 +36,8 @@ const Weather = () => {
 
     return (
         <div className={forecast.length && findWeather()}>
-            
             {forecast.length && <WeatherCurrentItem cityName={cityName} currentWeather={forecast[0]}/>}
             {forecast.length && <WeatherSlaider forecast={forecast} />}
-               
         </div>
     )
 }

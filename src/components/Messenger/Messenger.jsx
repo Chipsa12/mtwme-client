@@ -1,5 +1,5 @@
 import Conversation from "../Conversation/Conversation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getConversations } from "../../actions/conversation"
 import { getMessages } from "../../actions/messenger"
@@ -11,7 +11,7 @@ const Messenger = ({socket}) => {
   useEffect(()=>{
     dispatch(getConversations())
     dispatch(getMessages())
-  },[])
+  },[dispatch])
   
   const { currentUser } = useSelector(state => state.user);
   const conversations = useSelector(state => state.conversation.conversations)

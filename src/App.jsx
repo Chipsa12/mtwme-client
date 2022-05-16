@@ -31,7 +31,7 @@ function App() {
       dispatch(getComments())
       dispatch(getMessages())
     }
-  },[])
+  },[dispatch])
 
   const isAuth = useSelector(state => state.user.isAuth);
 

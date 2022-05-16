@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { Marker, Popup } from 'react-map-gl';
-import { useSelector, useDispatch } from 'react-redux';
-import { clearLocation } from '../reducers/logReducer';
+import { useSelector } from 'react-redux';
 import LogEntryForm from '../LogEntryForm/LogEntryForm'
 import { NavLink } from 'react-router-dom';
 
@@ -10,7 +9,6 @@ import './Marker.css'
 const Markers = ({cb, location, logEntries, zoom, ...props}) => {
 
     const [showPopup, setShowPopup] = useState({});
-    const dispatch = useDispatch();
     let {currentUser, users} = useSelector(state => state.user)
 
     return (

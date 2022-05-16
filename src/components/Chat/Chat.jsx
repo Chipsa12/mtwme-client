@@ -33,7 +33,7 @@ const Chat = ({socket}) => {
     useEffect(()=>{
         const m = getMessagesByRoomIdClone(currentChat.id)
         m.then(r => setArrivalMessage(prev => [...prev, ...r]))
-    }, [])
+    }, [currentChat.id])
     const scrollRef = useRef();
     const handleSubmit = async (e) => {
         e.preventDefault();

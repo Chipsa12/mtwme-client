@@ -13,7 +13,6 @@ const WeatherCurrentItem = ({cityName, currentWeather}) => {
         event.preventDefault();
         if (searchCityName) {
             dispatch(getDataWeather(searchCityName))
-            console.log(searchCityName);
             setSearchCityName('');
         }
     }

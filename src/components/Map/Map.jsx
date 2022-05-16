@@ -4,7 +4,6 @@ import {MAP_BOX_TOKEN} from '../../config/config'
 import { useDispatch, useSelector } from 'react-redux';
 import { getLogs } from '../../actions/log';
 import Markers from '../Marker/Marker'
-import { addLocation } from '../reducers/logReducer';
 
 const Log = () => {
     const [viewport, setViewport] = useState({
@@ -18,7 +17,7 @@ const Log = () => {
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getLogs());
-    },[])
+    },[dispatch])
     const logEntries = useSelector(state => state.log.logs);
     
     const showAddMarkerPopup = (event) => {
