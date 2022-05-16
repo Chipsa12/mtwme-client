@@ -21,7 +21,7 @@ import './App.css';
 
 function App() {
   const dispatch = useDispatch();
-  const socket = io("ws://45.90.35.187:5005");
+  const socket = io("ws://62.113.108.250:5005");
   
   useEffect(()=>{
     dispatch(getAllUsers())
