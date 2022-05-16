@@ -1,0 +1,171 @@
+.currentItem {
+  width: 100%;
+  background-color: transparent;
+  border-radius: 25px;
+  position: relative;
+}
+
+.searchInput {
+  width: 50%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  border: none;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  line-height: 36px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.searchInput::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.searchInput:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.searchInput::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.searchInput::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  background-image: url(./img/cancel_btn.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.searchInput::-webkit-search-cancel-button:hover {
+  background-image: url(./img/cancel_btn_hover.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 14px;
+  height: 14px;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.cityTitle {
+  font-size: 36px;
+  font-weight: bold;
+  color: #000;
+}
+
+.date {
+  color: #fff;
+  word-wrap: break-word;
+}
+
+.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.temp {
+  font-size: 32px;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-top: 1.5rem;
+  width: 5rem;
+  color: #fff;
+  text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.7);
+}
+
+.temp::after {
+  content: "\00B0";
+}
+
+.icon {
+  margin-top: 1.5rem;
+  width: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  image-rendering: edges;
+}
+
+.description {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.moreInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin-top: 1.5rem;
+  height: 4.5rem;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.bolt {
+  font-weight: bold;
+}
+
+.simpleText {
+  color: #fff;
+  padding: 5px;
+  text-shadow: 1px 1px 1px #000;
+}
+
+.tempWeatherImgWeather {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=WeatherCurrentItem.module.css.map */

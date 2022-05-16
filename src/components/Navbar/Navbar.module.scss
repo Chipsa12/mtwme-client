@@ -1,0 +1,215 @@
+.container{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    align-items: center;
+    background-color: #789BF4;
+    font-family: 'Righteous', cursive;
+}
+.logo{
+    width: 512px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+.logoIcon{
+    width: 124px;
+    height: 100%;
+}
+.logoText{
+    @media screen and (max-width: 720px){
+        font-size: 24px;
+    }
+    @media screen and (max-width: 640px){
+        font-size: 20px;
+    }
+    text-align: center;
+    margin: 0 auto;
+    color: #bce9a7;
+    font-weight: bold;
+    font-size: 32px;
+    letter-spacing: 0.07em;
+}
+
+.groupNavLink {
+    & a {
+        @media screen and (max-width: 720px){
+            font-size: 16px;
+        }
+        @media screen and (max-width: 640px){
+            font-size: 14px;
+        }
+        text-decoration: none;
+        color: #bce9a7;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 18px;
+        padding: 0.5em;
+        &:hover {
+            color: #fff;
+        }
+    }   
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.modalMenu {
+    background: transparent;
+    outline: none;
+    border: none;
+    margin-right: 0.5em;
+    padding: 0.5em;
+    & img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    image-rendering: crisp-edges;
+    object-fit: cover;
+    &:hover {
+        outline: 1px solid #000;
+    }
+}
+
+.onLine {
+    background-color: rgb(10, 235, 10);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 40px;
+    right: 8px;
+}
+
+.offLine {
+    background-color: rgb(187, 187, 187);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 40px;
+    right: 8px;
+}
+
+.modalNoActive {
+    display: none;
+}
+
+.modalActive{
+    display: block;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 250px;
+    height: 290px;
+    background-color: #fff;
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
+    z-index: 6;
+}
+
+.wrapper {
+    padding: 1.5rem;
+    color: #000;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    initial-letter: 2;
+}
+
+.profileLink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    &:hover {
+        & div {
+            color: #79797975;
+        }
+        & img {
+            outline: 1px solid #000;
+        }
+    }
+}
+
+.onLineModal {
+    background-color: rgb(10, 235, 10);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 60px;
+    left: 52px;
+}
+
+.offLineModal {
+    background-color: rgb(187, 187, 187);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 60px;
+    left: 52px;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: flex-start;
+    word-wrap: break-word;
+    margin-left: 0.5rem;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.navList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 1.5rem;
+    & a, span {
+        text-decoration: none;
+        margin-bottom: 0.7rem;
+        color: inherit;
+        cursor: pointer;
+        &:hover {
+            color: #79797975;
+        }
+    }
+    
+}
+
+.exit {
+    margin-top: 1.5rem;
+    color: #797979b5;
+    cursor: pointer;
+    &:hover {
+        color: #626262;
+    }
+}

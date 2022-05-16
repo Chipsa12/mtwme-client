@@ -1,0 +1,42 @@
+.field {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.field input {
+  width: 300px;
+  color: #000;
+  border: none;
+  border-bottom: 2px solid #131313;
+  padding: 15px 15px 15px 0;
+  font-family: helvetica;
+  outline: none;
+}
+
+.field label {
+  text-transform: capitalize;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #959595;
+  font-family: helvetica;
+  font-size: 14px;
+  pointer-events: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label {
+  -webkit-transform: translateY(-25px);
+          transform: translateY(-25px);
+  font-size: 10px;
+  color: #131313;
+}
+
+.field input:hover {
+  cursor: text;
+}
+/*# sourceMappingURL=Input.module.css.map */

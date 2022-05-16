@@ -1,0 +1,48 @@
+button {
+    font-size: 26px;
+    padding: 0 0.5rem;
+}
+
+.marker {
+    transform: translate(-50%, -100%);
+}
+  
+.marker.red path {
+    fill: #f05305;
+}
+
+.marker.yellow path {
+    fill: #F3B73E;
+}
+
+.marker.green path {
+    fill: #3ecf16;
+}
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25vw;
+    padding: 1rem;
+}
+
+.popup img {
+    height: 200px;
+    width: auto;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+
+.text {
+    padding: 0.5rem;
+}
+
+.name {
+    padding: 0.5rem;
+}
+
+.name::first-letter {
+    text-transform: uppercase;
+}

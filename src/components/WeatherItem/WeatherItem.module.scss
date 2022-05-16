@@ -1,0 +1,68 @@
+.container {
+    height: 180px;
+    width: 100%;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    &:hover {
+        border-bottom: 2px solid rgb(193, 193, 193);
+    }
+}
+
+.weatherCard {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    & p {
+        padding: 5px 5px 0;
+    }
+}
+
+.icon {
+    width: 48px;
+}
+
+.simpleText {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 14px;
+    letter-spacing: 3%;
+    color: #fff;
+    text-align: left;
+}
+
+.bolt {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 24px;
+    letter-spacing: 3%;
+    color: #fff;
+    text-align: left;
+}
+
+.boltDay {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 24px;
+    letter-spacing: 3%;
+    color: #000;
+    text-align: left;
+}
+
+.weekendDay {
+    color: tomato;
+}
+
+.temp::after {
+    content: '\00B0';
+}
+

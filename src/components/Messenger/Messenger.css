@@ -1,0 +1,88 @@
+.messenger {
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+}
+
+.chatMenu {
+  width: 60vw;
+  overflow-y: auto;
+}
+
+.chatMenu::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: rgba(128, 128, 128, 0.3);
+}
+
+.chatMenu::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.6);
+  border-radius: 4px;
+}
+
+.chatMenu::-webkit-scrollbar-thumb:hover {
+  background-color: darkgray;
+}
+
+.chatMenuInput {
+  width: 90%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+.chatBoxWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.chatBoxTop {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 10px;
+  /* position: relative; */
+}
+
+.chatBoxTop::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: rgba(128, 128, 128, 0.3);
+}
+
+.chatBoxTop::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.6);
+  border-radius: 4px;
+}
+
+.chatBoxTop::-webkit-scrollbar-thumb:hover {
+  background-color: darkgray;
+}
+
+.chatBoxBottom {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+.chatMenuWrapper,
+.chatBoxWrapper {
+  padding: 10px;
+  height: 100%;
+}
+
+.chatMenuWrapper {
+  text-align: center;
+}
+
+.notConversation {
+  text-align: center;
+  font-size: 50px;
+  color: rgb(224, 220, 220);
+  cursor: default;
+}

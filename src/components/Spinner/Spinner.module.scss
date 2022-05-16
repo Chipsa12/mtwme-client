@@ -1,0 +1,18 @@
+.container {
+    display: none;
+}
+
+.spinner {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    margin-top: 30vh;
+}
+
+.visible {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background-color: #fff;
+}

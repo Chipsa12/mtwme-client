@@ -1,0 +1,28 @@
+.weather {
+    display: flex;
+    max-width: 740px;
+    height: 580px;
+    margin: 1.5rem auto;
+    border-radius: 25px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    opacity: 0.9;
+    background-repeat: no-repeat;
+    background-image: url(./img/bgImg.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+.weatherSun {
+    background-image: url(./img/Солнечная-погода.jpg);
+}
+
+.weatherCloud {
+    background-image: url(./img/пасмурная_погода.jpg);
+}
+
+.weatherRain {
+    background-image: url(./img/landscape-water-snow-winter-light-sky-night-sunlight-morning-rain-wave-window-glass-moody-dark-reflection-weather-storm-darkness-grey-clouds-raindrops-dramatic-freezing.jpg);
+
+}

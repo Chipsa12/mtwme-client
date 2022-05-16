@@ -1,0 +1,127 @@
+.currentItem {
+    width: 100%;
+    background-color: transparent;
+    border-radius: 25px;
+    position: relative;
+}
+
+.searchInput {
+    width: 50%;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+    border: none;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, .2);
+    font-size: 16px;
+    line-height: 36px;
+    font-weight: 300;
+    color: #fff;
+    &:focus {
+        outline: none;
+    }
+    &::placeholder {
+        color: rgba(255, 255, 255, .5);
+    }
+    &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        background-image: url(./img/cancel_btn.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 14px;
+        height: 14px;
+        cursor: pointer;
+        &:hover {
+            background-image: url(./img/cancel_btn_hover.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 14px;
+            height: 14px;
+        }
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.cityTitle {
+    font-size: 36px;
+    font-weight: bold;
+    color: #000;
+}
+
+.date {
+    color: #fff;
+    word-wrap: break-word;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.temp {
+    font-size: 32px;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-top: 1.5rem;
+    width: 5rem;
+    color: #fff;
+    text-shadow: 1px 2px 1px rgba(0, 0, 0, .7);
+    &::after {
+        content: "\00B0";
+    }
+}
+
+.icon {
+    margin-top: 1.5rem;
+    width: 60px;
+    object-fit: cover;
+    image-rendering: edges;
+}
+
+.description {
+    // position: absolute;
+    // right: 0;
+    // left: 20rem;
+    // top: 12rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    // transform: rotateZ(270deg);
+}
+
+.moreInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.5rem;
+    height: 4.5rem;
+    background-color: rgba(255, 255, 255, .3);
+}
+
+.bolt {
+    font-weight: bold;
+}
+
+.simpleText {
+    color: #fff;
+    padding: 5px;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.tempWeatherImgWeather {
+    display: flex;
+    align-items: center;
+}

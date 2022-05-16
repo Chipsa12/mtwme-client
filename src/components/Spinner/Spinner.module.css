@@ -1,0 +1,23 @@
+.container {
+  display: none;
+}
+
+.spinner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 30vh;
+}
+
+.visible {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background-color: #fff;
+}
+/*# sourceMappingURL=Spinner.module.css.map */

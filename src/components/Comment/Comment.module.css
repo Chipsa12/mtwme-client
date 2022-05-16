@@ -1,0 +1,124 @@
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  border-top: 1px solid #000;
+}
+
+.notComments {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  color: #828282;
+}
+
+.comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 0.5rem 1.5rem;
+  position: relative;
+}
+
+.avatarComment {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.wrapperComment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  margin-left: calc(20px + 0.5rem);
+  border-bottom: 1px solid #828282;
+}
+
+.textComment {
+  width: 100%;
+  word-wrap: break-word;
+  padding-bottom: 0.5rem;
+  font-size: 16px;
+}
+
+.date {
+  font-size: 12px;
+  color: #828282;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 1.5rem;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.form {
+  margin-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  min-width: 250px;
+  outline: none;
+  border: none;
+  border: 1px solid #828282;
+  border-radius: 15px;
+  padding: 0.5rem;
+  font-size: 16px;
+}
+
+.btnSend {
+  margin-left: 10px;
+  outline: none;
+  border: none;
+  background-color: #fff;
+}
+
+.btnSend img {
+  width: 32px;
+  height: 32px;
+}
+/*# sourceMappingURL=Comment.module.css.map */
