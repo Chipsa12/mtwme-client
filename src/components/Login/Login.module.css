@@ -19,4 +19,11 @@
   border-radius: 14px;
   padding: 1.5rem;
 }
+
+.error {
+  padding: 0.5rem;
+  background-color: tomato;
+  font-size: 18px;
+  color: #fff;
+}
 /*# sourceMappingURL=Login.module.css.map */

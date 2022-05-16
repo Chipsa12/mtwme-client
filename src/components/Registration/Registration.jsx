@@ -3,7 +3,6 @@ import {useNavigate} from "react-router-dom";
 import Input from "../UI/input/Input";
 import Button from "../UI/button/Button";
 import { registration } from "../../actions/user";
-import { useSelector } from "react-redux";
 
 import styles from "./Registration.module.css";
 

@@ -13,7 +13,6 @@ export const registration = async (login, password, firstName, lastName) => {
         })
         return response.data.message
     } catch (e) {
-        console.log(e.response.data.message)
         return e.response.data.message
     }
 }
@@ -28,7 +27,7 @@ export const login = (login, password) => {
             dispatch(setUser(response.data.user))
             localStorage.setItem('token', response.data.token)
         } catch (e) {
-           console.log(e.response.data.message)
+           return e.response.data.message
         }
     }
 }

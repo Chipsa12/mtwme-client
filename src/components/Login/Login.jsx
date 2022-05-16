@@ -11,17 +11,24 @@ const Login = () => {
     const dispatch = useDispatch();
     const [loginField, setLoginField] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const auth = (e) => {
         e.preventDefault();
         if (!loginField || !password) {return;}
-        dispatch(login(loginField, password));
+        const res = dispatch(login(loginField, password));
+        res.then(r => {
+            if (r === 'User not found') {
+                setError(r)
+            }
+        })
         setLoginField('');
         setPassword('');
     };
 
     return(
         <form className={styles.login} onSubmit={auth}>
+            {error && <span className={styles.error}>{error}</span>}
             <h1>Вход в MTwME</h1>
             <Input value={loginField} onChange={e => setLoginField(e.target.value)} type="email" nameField="Логин"/>
             <Input value={password} onChange={e => setPassword(e.target.value)} type="password" nameField="Пароль"/>

@@ -24,6 +24,7 @@ const LogEntryForm = ({ location, onClose }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
+      {error && <span>{error}</span>}
       <label htmlFor="title">Название места</label>
       <input name="title" required {...register("title")} />
       <label htmlFor="description">Описание</label>

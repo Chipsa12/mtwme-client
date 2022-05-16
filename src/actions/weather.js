@@ -12,8 +12,8 @@ export const getDataWeather = (city='Ижевск',lang = 'ru') => {
             dispatch(setWeather(data))
             dispatch(loaderOff())
         } catch (e) {
-            console.log(e)
             dispatch(loaderOff())
+            console.log('API ERROR')
         }
     }
 }

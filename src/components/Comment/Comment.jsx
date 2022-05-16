@@ -10,11 +10,11 @@ import { setCommentFromPost, getComments, deleteCommentFromPost } from '../../ac
 import styles from './Comment.module.css'
 
 const Component = ({postId, props}) => {
+    const dispatch = useDispatch()
     const [comment, setComment] = useState('')
     useEffect(()=>{
         dispatch(getComments())
-    },[])
-    const dispatch = useDispatch()
+    },[dispatch])
     const {comments} = useSelector(state => state.comment)
     const posts = useSelector(state => state.post.posts)
     const currentComments = comments.filter(comment => comment.post_id === postId)

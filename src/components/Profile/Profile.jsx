@@ -14,7 +14,7 @@ const Profile = ({socket}) => {
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getAllUsers())
-    },[])
+    },[dispatch])
     let {id} = useParams();
     let user = useSelector(state => state.user.users).filter(user => user.id === id)[0]
     const [showInputMessage, setShowInputMessage] = useState(false);
