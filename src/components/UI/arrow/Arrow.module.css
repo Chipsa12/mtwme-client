@@ -15,14 +15,14 @@
 }
 
 .arrowRight {
-  background-image: url(img/rightArrow.svg);
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/mtwme-a1870.appspot.com/o/images%2FrightArrow.svg?alt=media&token=568a936a-96bd-4bd8-a69b-8c9a2a7153b8");
   background-repeat: no-repeat;
   background-size: 12px;
   background-position: center;
 }
 
 .arrowLeft {
-  background-image: url(img/leftArrow.svg);
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/mtwme-a1870.appspot.com/o/images%2FleftArrow.svg?alt=media&token=b58d9563-f57b-4a44-8140-940c897bde4f");
   background-repeat: no-repeat;
   background-size: 12px;
   background-position: center;

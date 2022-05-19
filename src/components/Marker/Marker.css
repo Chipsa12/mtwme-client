@@ -23,8 +23,8 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-width: 200px;
     width: 25vw;
-    padding: 1rem;
 }
 
 .popup img {

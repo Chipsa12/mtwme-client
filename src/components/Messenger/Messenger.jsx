@@ -6,7 +6,7 @@ import { getMessages } from "../../actions/messenger"
 
 import "./Messenger.css";
 
-const Messenger = ({socket}) => {
+const Messenger = () => {
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch(getConversations())
@@ -29,7 +29,7 @@ const Messenger = ({socket}) => {
               ?
               currentConversations.map((c) => (
                 <div key={c.id}>
-                  <Conversation socket={socket} conversation={c} currentUser={currentUser} />
+                  <Conversation conversation={c} currentUser={currentUser}/>
                 </div>
               ))
               : <span className="notConversation">У вас пока нет диалогов</span>

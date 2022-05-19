@@ -62,6 +62,13 @@
     position: absolute;
     top: 50px;
     left: 50px;
+    z-index: 5;
+  }
+
+  @media screen and (max-width: 440px) {
+    .shareContainerPicker {
+      left: -20px;
+    }
   }
   
   .shareIcon{

@@ -1,51 +1,83 @@
-import axios from 'axios'
 import { loaderOn, loaderOff } from '../components/reducers/appReducer';
-import { API_URL } from '../config/config';
-import { setConversations, addConversation } from '../components/reducers/conversationReducer';
+import { setConversations } from '../components/reducers/conversationReducer';
+import uniqid from 'uniqid';
+import { getDatabase, ref, set, get} from "firebase/database";
+import { sendMessage } from './messenger';
 
-
-export const createConversation = async (senderId, receiverId) => {
-    try {
-        const response = await axios.post(`${API_URL}api/conversation`, {senderId, receiverId}, 
-            {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
-        )
-        return response.data.currentConversation
-    } catch (e) {
-        console.log(e)
-    }    
-}
-
-export const createdConversation = (senderId, receiverId) => {
+export const createConversation = (senderId, receiverId, text) => {
     return async dispatch => {
         try {
-            dispatch(loaderOn())
-            const response = await axios.post(`${API_URL}api/conversation`, {senderId, receiverId}, 
-                {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
-            )
-            dispatch(setConversations(response.data.conversations))
-            dispatch(addConversation(response.data.currentConversation))
-            dispatch(loaderOff())
+            const db = getDatabase();
+            const conversationId = uniqid();
+            get(ref(db), `conversations/`).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const { conversations } = snapshot.val();
+                    if (!conversations) {
+                        set(ref(db, 'conversations/' + conversationId), {
+                            id: conversationId,
+                            members: `${senderId} ${receiverId}`
+                        })
+                        .then(() => {
+                            dispatch(sendMessage(senderId, conversationId, text))
+                        })
+                        .catch(err =>  {return err})
+                        return;
+                    }
+                    for(const [key, value] of Object.entries(conversations)) {
+                        const members = value.members.split(' ')
+                        if (members.includes(senderId) && members.includes(receiverId)) {
+                            dispatch(sendMessage(senderId, key, text))
+                            return;
+                        }
+                    }
+                    set(ref(db, 'conversations/' + conversationId), {
+                        id: conversationId,
+                        members: `${senderId} ${receiverId}`
+                    })
+                    .then(() => {
+                        dispatch(sendMessage(senderId, conversationId, text))
+                    })
+                    .catch(err =>  {return err})
+                    return;
+                } else {
+                    return
+                }
+            })
+            .catch((err) => {return err})
         } catch (e) {
-            console.log(e)
-            dispatch(loaderOff())
+            return e;
         }
     }
-    
 }
 
 export const getConversations = () => {
     return async dispatch => {
         try {
             dispatch(loaderOn())
-            const response = await axios.get(`${API_URL}api/conversation`,
-                {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
-            )
-            dispatch(setConversations(response.data.conversations))
+            const db = getDatabase();
+            get(ref(db), `conversations/`).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const { conversations } = snapshot.val();
+                    if (!conversations) {
+                        dispatch(setConversations([]))
+                        return
+                    }
+                    let conversationsArray = [];
+                    for(const [key, value] of Object.entries(conversations)) {
+                        value['members'] = value.members.split(' ')
+                        conversationsArray.push(value)
+                    }
+                    dispatch(setConversations(conversationsArray))
+                } else {
+                    dispatch(loaderOff())
+                    return
+                }
+            })
+            .catch((err) => {return err})
             dispatch(loaderOff())
         } catch (e) {
-            console.log(e)
             dispatch(loaderOff())
+            return e;
         }
     }
-    
 }

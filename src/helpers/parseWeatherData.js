@@ -1,5 +1,9 @@
+import uniqid from 'uniqid';
+
 const getDataWeather = (weatherData) => {
+    const id = uniqid();
     return {
+        id,
         'wind_spd':weatherData.wind_spd,
         'high_temp':weatherData.high_temp,
         'low_temp':weatherData.low_temp,

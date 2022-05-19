@@ -2,10 +2,11 @@ import React from 'react';
 import { Carousel } from '@trendyol-js/react-carousel';
 import Arrow from '../UI/arrow/Arrow';
 import WeatherItem from '../WeatherItem/WeatherItem';
+
 import styles from './WeatherSlaider.module.css'
 
 const WeatherSlaider = ({forecast}) => {
-
+    
     return (
         <Carousel
             className={styles.slaider} 
@@ -16,9 +17,9 @@ const WeatherSlaider = ({forecast}) => {
             rightArrow={<Arrow direction="right" />}
         >
         {
-            forecast.map((data, index) => {
+            forecast.map((data) => {
                 return <WeatherItem 
-                    key={index} 
+                    key={data.id} 
                     highTemp={Math.round(data.high_temp)} 
                     lowTemp={Math.round(data.low_temp)}
                     dayOfMonth={data.currentDayOfMonth || data.nextDayOfMonth} 

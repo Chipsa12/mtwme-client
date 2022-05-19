@@ -41,7 +41,7 @@
 
 .searchInput::-webkit-search-cancel-button {
   -webkit-appearance: none;
-  background-image: url(./img/cancel_btn.svg);
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/mtwme-a1870.appspot.com/o/images%2Fcancel_btn.svg?alt=media&token=c2c0b293-c9dd-4934-9ee2-971a52f3b639");
   background-size: contain;
   background-repeat: no-repeat;
   width: 14px;
@@ -50,7 +50,7 @@
 }
 
 .searchInput::-webkit-search-cancel-button:hover {
-  background-image: url(./img/cancel_btn_hover.svg);
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/mtwme-a1870.appspot.com/o/images%2Fcancel_btn_hover.svg?alt=media&token=9cc28194-b3a5-4005-b9f5-bd93b1024f91");
   background-size: contain;
   background-repeat: no-repeat;
   width: 14px;

@@ -7,7 +7,6 @@
     margin-top: 20px;
     overflow: hidden;
     width: 100%;
-    justify-content: space-between;
   }
   
   .conversation:hover {
@@ -38,6 +37,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ccc;
   }
 
   .conversationLastMessage {
@@ -46,6 +47,7 @@
     padding-top: 0.5rem;
     overflow: hidden;
     color: rgb(130,130,130);
+    text-align: left;
   }
 
   .conversationLastMessageTime {
@@ -56,6 +58,12 @@
     padding-top: 0.5rem;
     margin-left: 20px;
     color: rgb(130,130,130);
+  }
+
+  @media screen and (max-width: 400px) {
+    .conversationLastMessage {
+      width: 40px;
+    }
   }
 
   .notReadyMessage {

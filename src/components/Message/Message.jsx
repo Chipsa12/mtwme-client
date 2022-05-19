@@ -1,26 +1,38 @@
-import { format } from "timeago.js";
-import { API_URL } from "../../config/config";
+import TimeAgo from 'timeago-react';
 import { useSelector } from "react-redux";
+import {NavLink} from "react-router-dom";
 
 import "./Message.css";
 
 const Message = ({ message, own, userId }) => {
   const {users} = useSelector(state => state.user)
-  const currentUser = users.find(user => user.id === userId)
+  const { currentUser } = useSelector(state => state.user)
+  const sender = users[userId]
   return (
     <div className={own ? "message own" : "message"}>
       <div className="messageTop">
-        <img
-          className="messageImg"
-          src={!currentUser.avatar.includes('default')
-            ? API_URL + currentUser.id + '/' + currentUser.avatar
-            : API_URL + currentUser.avatar
-          }
-          alt="avatar"
-        />
+        {
+          currentUser.id !== userId
+          ?
+          <NavLink to={`/profile/${userId}`}>
+            <img
+              className="messageImg"
+              src={sender.avatar}
+              alt="avatar"
+            />
+          </NavLink>
+          :
+          <img
+              className="messageImg"
+              src={sender.avatar}
+              alt="avatar"
+            />
+        }
         <div className="messageText">{message.text}</div>
       </div>
-      <div className="messageBottom">{format(message.created_at)}</div>
+      <div className="messageBottom">
+        <TimeAgo datetime={message.created_at}/>
+      </div>
     </div>
   );
 }

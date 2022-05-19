@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, {NavigationControl} from 'react-map-gl';
 import {MAP_BOX_TOKEN} from '../../config/config'
 import { useDispatch, useSelector } from 'react-redux';
 import { getLogs } from '../../actions/log';
-import Markers from '../Marker/Marker'
+import Markers from '../Marker/Marker';
+
 
 const Log = () => {
+    
     const [viewport, setViewport] = useState({
         width: '100vw',
         height: 'calc(100vh - 80px)',
@@ -39,6 +41,8 @@ const Log = () => {
             {
                 logEntries && <Markers cb={setLocation} location={location} logEntries={logEntries} zoom={viewport.zoom}/>
             }
+            
+            <NavigationControl style={{marginTop: '15vh'}} options={{visualizePitch: true}}/>
         </ReactMapGL>
     );
     

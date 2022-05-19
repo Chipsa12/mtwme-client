@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import {BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { auth, getAllUsers } from "./actions/user";
+import { auth } from "./actions/user";
 import { getPosts } from "./actions/post";
 import { getComments } from "./actions/post";
+import { getLogs } from "./actions/log"
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import Weather from './components/Weather/Weather';
@@ -14,23 +15,24 @@ import Profile from './components/Profile/Profile';
 import News from './components/News/News';
 import Messenger from './components/Messenger/Messenger';
 import Chat from './components/Chat/Chat';
-import {io} from "socket.io-client";
 import { getMessages } from "./actions/messenger";
+import { getDataWeatherMyLocation } from './actions/weather';
 
 import './App.css';
 
 function App() {
   const dispatch = useDispatch();
-  const socket = io("ws://45.90.35.187:5005");
-  
+    useEffect(() =>{
+        navigator.geolocation.getCurrentPosition(function(position) {
+          dispatch(getDataWeatherMyLocation(position.coords.latitude, position.coords.longitude))
+        });
+    },[dispatch])
   useEffect(()=>{
-    dispatch(getAllUsers())
-    if (localStorage.getItem('token')) {
-      dispatch(auth())
-      dispatch(getPosts())
-      dispatch(getComments())
-      dispatch(getMessages())
-    }
+    dispatch(auth())
+    dispatch(getPosts())
+    dispatch(getComments())
+    dispatch(getMessages())
+    dispatch(getLogs())
   },[dispatch])
 
   const isAuth = useSelector(state => state.user.isAuth);
@@ -40,23 +42,18 @@ function App() {
       <div className="App">
         <Spinner />
         <Navbar />
-        {!isAuth 
-          ?<Routes>
-              <Route path="/login" element={<Login />}/>
-              <Route path="/registration" element={<Registration />}/>
-              <Route path="*" element={<Navigate replace to='/login'/>}/>
-            </Routes>
-          :
           <Routes>
-              <Route path="/profile/:id" element={<Profile socket={socket} />}/>
-              <Route path="/" element={<Log />}/>
-              <Route path="/messenger" element={<Messenger socket={socket} />}/>
-              <Route path="/messenger/:roomId" element={<Chat socket={socket} />}/>
+              <Route path="/login" element={isAuth ? <Navigate replace to='/'/> : <Login />}/>
+              <Route path="/registration" element={<Registration />}/>
+              <Route path="/profile/:id" element={<Profile />}/>
+              <Route exact path="/" element={isAuth ? <Log /> : <Navigate replace to='/login'/>}/>
+              <Route path="/messenger" element={<Messenger />}/>
+              <Route path="/messenger/:roomId" element={<Chat />}/>
               <Route path="/news" element={<News/>}/>
               <Route path="/weather" element={<Weather />}/>
               <Route path="*" element={<Navigate replace to='/'/>} />
           </Routes>
-        }
+        
       </div>
     </Router>
   );

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../UI/button/Button'
 import { createdLog } from '../../actions/log';
-import {useForm} from 'react-hook-form'
+import {useForm} from 'react-hook-form';
 
 import './LogEntryForm.css'
 
@@ -10,12 +10,13 @@ const LogEntryForm = ({ location, onClose }) => {
   const [error, setError] = useState('');
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const { currentUser } = useSelector(state => state.user);
 
   const onSubmit = (data) => {
     try {
         data.latitude = location.latitude;
         data.longitude = location.longitude;
-        dispatch(createdLog(data));
+        dispatch(createdLog(currentUser.id, data));
         onClose();
     } catch (error) {
         setError(error.message);

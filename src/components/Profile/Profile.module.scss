@@ -1,57 +1,3 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    margin: 40px 250px;
-    position: relative;
-}
-
-.bgProfile {
-    width: inherit;
-    height: 200px;
-    & img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-}
-
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.userAvatar {
-    width: 200px;
-    height: 200px;
-    background-color: #79797966;
-}
-
-.avatar {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.userInfo {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content:space-between;
-    margin-left: 50px;
-    color: #797979;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 19px;
-    & span {
-        padding: 0 0.5rem;
-    }
-}
-
-//**////
-
 .profile{
     display: flex;
     height: 100%;
@@ -155,4 +101,74 @@
     & form {
         margin: 30vh auto 0;
     }
+}
+
+.logs {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titleLogs {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.log {
+    width: 60vw;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+}
+
+.infoLog {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: calc(100% - 25px);
+    height: auto;
+    text-align: left;
+}
+
+.titleLog {
+    width: 20%;
+    word-wrap: break-word;
+}
+
+.descriptionLog {
+    width: 60%;
+    word-wrap: break-word;
+    padding: 0 5px;
+}
+
+.visitedLog {
+    width: 20%;
+}
+
+.markerGreen path {
+    fill: #3ecf16;
+}
+
+.markerYellow {
+    fill: #F3B73E;
+}
+
+.notLogs {
+    margin-top: 30px;
+    font-size: 20px;
+    color: #ccc;
+}
+
+.notPosts {
+    margin-top: 30px;
+    font-size: 20px;
+    color: #ccc;
 }

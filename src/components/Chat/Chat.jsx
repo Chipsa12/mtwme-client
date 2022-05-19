@@ -1,16 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Picker from 'emoji-picker-react';
 import Message from "../Message/Message";
-import { sendMessage, getMessagesByRoomIdClone } from "../../actions/messenger"
-import iconBtnMessage from './img/btn-send-message.svg';
-import iconBtnEmoji from './img/btn-emoji.svg';
-import iconBtnMic from './img/btn-mic.svg';
+import { sendMessage, getMessagesByRoomId } from "../../actions/messenger";
 import useSpeechToText from 'react-hook-speech-to-text';
 
 import './Chat.css'
 
-const Chat = ({socket}) => {
+const Chat = () => {
+    const dispatch = useDispatch();
     const {
         error,
         interimResult,
@@ -28,40 +26,30 @@ const Chat = ({socket}) => {
         setNewMessage(prev => prev + emojiObject.emoji)
     };
     const { currentChat } = useSelector(state => state.conversation)
+    useEffect(() => {
+        dispatch(getMessagesByRoomId(currentChat.id))
+    },[dispatch, currentChat.id])
     const { currentUser } = useSelector(state => state.user);
+    const { currentMessages } = useSelector(state => state.messenger)
     const [arrivalMessage, setArrivalMessage] = useState([]);
     useEffect(()=>{
-        const m = getMessagesByRoomIdClone(currentChat.id)
-        m.then(r => setArrivalMessage(prev => [...prev, ...r]))
-    }, [currentChat.id])
+        setArrivalMessage(currentMessages)
+    }, [currentMessages])
     const scrollRef = useRef();
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!newMessage.length){
             return;
         }
-        const messageData = {
-            roomId: currentChat.id,
-            sender: currentUser.id,
-            text: newMessage,
-            created_at: new Date(),
-        };
-        sendMessage(currentChat.id, newMessage)
-        await socket.emit("send_message", messageData);
-        setArrivalMessage((list) => [...list, messageData]);
+        dispatch(sendMessage(currentUser.id, currentChat.id, newMessage))
+        dispatch(getMessagesByRoomId(currentChat.id))
+        setArrivalMessage(currentMessages);
         setNewMessage("");
     };
 
     useEffect(() => {
-        socket.on("receive_message", (data) => {
-            setArrivalMessage((list) => [...list, data]);
-            sendMessage(currentChat.id, data.text)
-        });
-    }, [socket, currentChat.id]);
-
-    useEffect(() => {
         scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, [arrivalMessage]);
+    }, [arrivalMessage]);
     
     const handleChange = (e) => {
         e.preventDefault();
@@ -113,7 +101,7 @@ const Chat = ({socket}) => {
                             <div className='containerBtn'>
                                 <img 
                                     className="chatEmojiButton" 
-                                    src={iconBtnEmoji} 
+                                    src='https://firebasestorage.googleapis.com/v0/b/mtwme-a1870.appspot.com/o/images%2Fbtn-emoji.svg?alt=media&token=e722e6be-5f36-4fb7-9c97-0f353b39c05b' 
                                     alt="emoji btn" 
                                     onClick={() => setShowPicker(prev => !prev)} 
                                 />
@@ -123,14 +111,14 @@ const Chat = ({socket}) => {
                                         <img 
                                             className="chatMicButton" 
                                             onClick={isRecording ? stopSpeechToText : startSpeechToText}
-                                            src={iconBtnMic} 
+                                            src='https://firebasestorage.googleapis.com/v0/b/mtwme-a1870.appspot.com/o/images%2Fbtn-mic.svg?alt=media&token=a27e325c-fa71-466e-a083-01d4ff6a83dc' 
                                             alt="mic btn" 
                                         />
                                         {isRecording && <div className='micActivity'></div>}
                                     </div>
                                 }
                                 <img 
-                                    src={iconBtnMessage} 
+                                    src='https://firebasestorage.googleapis.com/v0/b/mtwme-a1870.appspot.com/o/images%2Fbtn-send-message.svg?alt=media&token=0b09df6c-351a-4a68-b811-2200bb0bb2ed' 
                                     alt="send message" 
                                     className="chatSubmitButton"
                                     onClick={handleSubmit}

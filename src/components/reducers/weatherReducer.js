@@ -10,8 +10,8 @@ const defaultState = {
 export default function userReducer(state = defaultState, action) {
     switch (action.type) {
         case SET_WEATHER:
-            const {city_name, data} = action.payload;
-            const weatherData = parseWeatherData(data)
+            let {city_name, data} = action.payload;
+            let weatherData = parseWeatherData(data)
             return {
                 ...state,
                 cityName: city_name,

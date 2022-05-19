@@ -28,8 +28,8 @@ const Markers = ({cb, location, logEntries, zoom, ...props}) => {
                             <svg
                                 className={entry.user_id === currentUser.id ? "marker green" : "marker yellow"}
                                 style={{
-                                    height: `${6 * zoom}px`,
-                                    width: `${6 * zoom}px`,
+                                    height: `${!(zoom < 2) ? 7 * zoom : 25}px`,
+                                    width: `${!(zoom < 2) ? 7 * zoom : 25}px`,
                                 }}
                                 version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512">
                                 <g>
@@ -59,7 +59,7 @@ const Markers = ({cb, location, logEntries, zoom, ...props}) => {
                                     <small className='text'>Visited on: {new Date(entry.visit).toLocaleDateString()}</small>
                                     <small className='name'>Author: <NavLink to={`/profile/${entry.user_id}`}>
                                         {
-                                            users.filter(user => user.id === entry.user_id)[0].surname +" " + users.filter(user => user.id === entry.user_id)[0].name
+                                            users[entry.user_id].surname +" " + users[entry.user_id].name
                                         }
                                         </NavLink>
                                     </small>

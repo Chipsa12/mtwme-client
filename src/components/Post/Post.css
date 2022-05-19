@@ -35,6 +35,13 @@
     color: tomato;
     cursor: pointer;
   }
+
+  @media screen and (max-width: 400px) {
+    .postSettings {
+      top: 20px;
+      right: 30px;
+    }
+  }
   
   .postTopLeft {
     display: flex;

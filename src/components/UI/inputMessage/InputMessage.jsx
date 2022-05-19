@@ -4,14 +4,14 @@ import {Cancel} from "@material-ui/icons";
 import Button from '../button/Button';
 import { createConversation } from '../../../actions/conversation';
 import { addConversation } from '../../reducers/conversationReducer';
-import { sendMessage } from '../../../actions/messenger'
+import { sendMessage } from '../../../actions/messenger';
 
 import styles from './InputMessage.module.css'
 
-const InputMessage = ({userId, cb, socket}) => {
+const InputMessage = ({userId, cb}) => {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.user.users).filter(user => user.id === userId)[0]
-    const {currentUser} = useSelector(state => state.user)
+    const {users, currentUser} = useSelector(state => state.user)
+    const user = users[userId];
     const {conversations} = useSelector(state => state.conversation)
     const [message, setMessage] = useState('');
     const handleChange = (e) => {
@@ -24,36 +24,20 @@ const InputMessage = ({userId, cb, socket}) => {
             return;
         }
         const conversation = conversations.filter(conversation => 
-            (conversation.members[0] === currentUser.id || conversation.members[1] === currentUser.id) && (conversation.members[0] === userId || conversation.members[1] === userId)
+            (conversation.members[0] === currentUser.id || conversation.members[1] === currentUser.id) 
+            && 
+            (conversation.members[0] === userId || conversation.members[1] === userId)
         )
         if (conversation.length) {
-            const messageData = {
-                roomId: conversation.id,
-                sender: currentUser.id,
-                text: message,
-                created_at: new Date(),
-            };
             dispatch(addConversation(conversation))
-            socket.emit('join_room', {roomId: conversation.id, userId: currentUser.id})
-            await socket.emit("send_message", messageData);
+            dispatch(sendMessage(currentUser.id, conversation[0].id, message))
             cb(prev=> !prev);
             setMessage('');
             return;
         }
-        const res = createConversation(currentUser.id, userId)
-        res.then(conversationCreated => {
-            const messageData = {
-                roomId: conversationCreated.id,
-                sender: currentUser.id,
-                text: message,
-                created_at: new Date(),
-            };
-            sendMessage(conversationCreated.id, message)
-            socket.emit('join_room', {roomId: conversationCreated.id, userId: currentUser.id})
-            socket.emit("send_message", messageData);
-            cb(prev=> !prev);
-            setMessage('');
-        })
+        dispatch(createConversation(currentUser.id, userId, message))
+        cb(prev=> !prev);
+        setMessage('');
     }
     return (
         <form className={styles.form} onSubmit={handleSubmit}>

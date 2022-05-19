@@ -1,3 +1,6 @@
+.entry-form {
+    padding: 0 0.7rem;
+}
 .entry-form label,
 .entry-form input,
 .entry-form textarea,
@@ -6,6 +9,22 @@
     margin: 0.5rem 0;
     display: block;
     width: 100%;
+    padding: 4px;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
+
+.entry-form textarea {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 60px;
+    max-height: 60px;
+    overflow-y: auto;
+}
+
+.entry-form label,
+.entry-form button {
+    border: none;
 }
 
 .error {

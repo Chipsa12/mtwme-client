@@ -1,6 +1,6 @@
 const SET_POSTS = "SET_POSTS"
 const DELETE_POST = "DELETE_POST"
-const CREATE_POST = "CREATE_POST"
+const ADD_POST = "ADD_POST"
 const UPDATE_LIKES = "UPDATE_LIKES"
 
 const defaultState = {
@@ -14,26 +14,36 @@ export default function userReducer(state = defaultState, action) {
             return {
                 ...state,
                 posts: action.payload.sort(function(a, b) {
-                    return b.id - a.id;
+                    let timeB = new Date(b.created_at).getTime();
+                    let timeA = new Date(a.created_at).getTime();
+                    return timeB - timeA;
                 })
             }
-        case CREATE_POST:
+        case ADD_POST:
             return {
                 ...state,
-                currentPost: action.payload
+                posts: action.payload.sort(function(a, b) {
+                    let timeB = new Date(b.created_at).getTime();
+                    let timeA = new Date(a.created_at).getTime();
+                    return timeB - timeA;
+                })
             }
         case DELETE_POST:
             return {
                 ...state,
                 posts: action.payload.sort(function(a, b) {
-                    return b.id - a.id;
+                    let timeB = new Date(b.created_at).getTime();
+                    let timeA = new Date(a.created_at).getTime();
+                    return timeB - timeA;
                 })
             }
         case UPDATE_LIKES:
             return {
                 ...state,
                 posts: action.payload.sort(function(a, b) {
-                    return b.id - a.id;
+                    let timeB = new Date(b.created_at).getTime();
+                    let timeA = new Date(a.created_at).getTime();
+                    return timeB - timeA;
                 })
             }
         default:
@@ -43,6 +53,6 @@ export default function userReducer(state = defaultState, action) {
 
 
 export const setPosts = posts => ({type: SET_POSTS, payload: posts})
-export const setCurrentPost = post => ({type: CREATE_POST, payload: post})
-export const deletePost = posts => ({type: DELETE_POST, payload: posts})
+export const addPost = post => ({type: ADD_POST, payload: post})
+export const deletePostById = posts => ({type: DELETE_POST, payload: posts})
 export const updateLikes = posts => ({type: UPDATE_LIKES, payload: posts})

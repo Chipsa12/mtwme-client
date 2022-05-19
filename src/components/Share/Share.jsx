@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../config/config";
 import Button from "../UI/button/Button";
-import {createPost} from "../../actions/post"
+import { uploadImgPost } from "../../actions/uploadFile";
 import Picker from 'emoji-picker-react';
 
 import "./Share.css";
@@ -21,13 +21,13 @@ const Share = () => {
     const onEmojiClick = (event, emojiObject) => {
         setDescription(prev => prev + emojiObject.emoji)
     };
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState('');
     const submitHandler = async (e) => {
         e.preventDefault();
         if (file || description) {
-            dispatch(createPost(description, file))
+            dispatch(uploadImgPost(currentUser.id, description, file))
             setDescription('')
-            setFile(null)
+            setFile('')
             setShowPicker(false)
         } else {
             return;
@@ -44,10 +44,7 @@ const Share = () => {
                 <div className="shareTop">
                     <img
                         className="shareProfileImg"
-                        src={!currentUser.avatar.includes('default') 
-                        ? API_URL + currentUser.id + '/' + currentUser.avatar
-                        : API_URL + currentUser.avatar
-                        }
+                        src={currentUser.avatar}
                         alt=""
                     />
                     <input

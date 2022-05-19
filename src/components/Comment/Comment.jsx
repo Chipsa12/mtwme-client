@@ -1,9 +1,7 @@
 import {Cancel} from "@material-ui/icons";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import sendBtnImg from './img/send-btn.svg'
-import { API_URL } from '../../config/config';
-import { format } from "timeago.js";
+import TimeAgo from 'timeago-react';
 import { NavLink } from 'react-router-dom';
 import { setCommentFromPost, getComments, deleteCommentFromPost } from '../../actions/post';
 
@@ -34,7 +32,7 @@ const Component = ({postId, props}) => {
         if (!comment) {
             return;
         }
-        dispatch(setCommentFromPost(postId, comment))
+        dispatch(setCommentFromPost(postId, currentUser.id, comment))
         setComment('')
     }
     return (
@@ -46,22 +44,18 @@ const Component = ({postId, props}) => {
                         <NavLink to={`/profile/${comment.user_id}`}>
                             <img 
                                 className={styles.avatarComment}
-                                src={ !users.filter(user => user.id === comment.user_id)[0].avatar.includes('default')
-                                    ? API_URL + comment.user_id + "/" + users.filter(user => user.id === comment.user_id)[0].avatar
-                                    : API_URL + users.filter(user => user.id === comment.user_id)[0].avatar
-                                } 
+                                src={ users[comment.user_id].avatar} 
                                 alt="avatar" 
                             />
                         </NavLink>
                         <div className={styles.wrapperComment}>
                             <div className={styles.textComment}>{comment.comment}</div>
                             <div className={styles.date}>
-                                {format(comment.created_at)}
+                                <TimeAgo datetime={comment.created_at}/>
                             </div>
                         </div>
                         {
-                            users.filter(
-                                user => user.id === comment.user_id)[0].token === localStorage.getItem('token')
+                            users[comment.user_id].token === localStorage.getItem('token')
                             ||
                             posts.filter(post => post.id === postId)[0].user_id === currentUser.id
                             ?
@@ -78,10 +72,7 @@ const Component = ({postId, props}) => {
             <div className={styles.wrapper}>
                 <img 
                     className={styles.avatar} 
-                    src={ !currentUser.avatar.includes('default') 
-                        ? API_URL + currentUser.id + '/' + currentUser.avatar
-                        : API_URL + currentUser.avatar
-                    } 
+                    src={currentUser.avatar} 
                     alt="" 
                 />
                 <form className={styles.form} onSubmit={handleSubmit}>
@@ -93,7 +84,10 @@ const Component = ({postId, props}) => {
                         placeholder='Написать комментарий...'
                     />
                     <button type="submit"className={styles.btnSend} onClick={handleSubmit}>
-                        <img src={sendBtnImg} alt="send btn" />
+                        <img 
+                            src='https://firebasestorage.googleapis.com/v0/b/mtwme-a1870.appspot.com/o/images%2Fsend-btn.svg?alt=media&token=cf5274d8-282f-4332-8f8c-a3f5270830cb' 
+                            alt="send btn" 
+                        />
                     </button>
                 </form>
             </div>

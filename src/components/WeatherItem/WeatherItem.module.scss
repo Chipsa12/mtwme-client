@@ -9,6 +9,12 @@
     }
 }
 
+@media screen and (max-width: 400px) {
+    .container {
+        width: 150px;
+    }
+}
+
 .weatherCard {
     width: 100%;
     height: 90%;
@@ -54,7 +60,7 @@
     font-weight: bold;
     line-height: 24px;
     letter-spacing: 3%;
-    color: #000;
+    color: #fff;
     text-align: left;
 }
 

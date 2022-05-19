@@ -1,26 +1,29 @@
-import axios from 'axios'
 import { loaderOn, loaderOff } from '../components/reducers/appReducer';
-import { API_URL } from '../config/config';
 import { setMessages, addMessage } from '../components/reducers/messengerReducer';
 
-export const sendMessage = async (conversationId, text) => {
-        try {
-            const response = await axios.post(`${API_URL}api/message`, {conversationId, text}, 
-                {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
-            )
-        } catch (e) {
-            console.log(e)
-        }
-}
+import uniqid from 'uniqid';
+import { getDatabase, ref, set, get} from "firebase/database";
 
-export const getMessagesByRoomIdClone = async (roomId) => {
-    try {
-        const response = await axios.post(`${API_URL}api/message/messages`, {roomId},
-            {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
-        )
-        return response.data.messages
-    } catch (e) {
-        console.log(e)
+export const sendMessage = (senderId, conversationId, text) => {
+    return async dispatch => {
+        try {
+            dispatch(loaderOn())
+            const db = getDatabase();
+            const messageId = uniqid();
+            set(ref(db, 'messages/' + messageId), {
+                id: messageId,
+                created_at: new Date().toISOString(),
+                sender: senderId,
+                conversation_id: conversationId,
+                text
+            })
+            .then(() => {})
+            .catch(err =>  {return err})
+            dispatch(loaderOff())
+        } catch (error) {
+            dispatch(loaderOff())
+            return error
+        }
     }
 }
 
@@ -28,10 +31,26 @@ export const getMessagesByRoomId = (roomId) => {
     return async dispatch => {
         try {
             dispatch(loaderOn())
-            const response = await axios.post(`${API_URL}api/message/messages`, {roomId},
-                {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
-            )
-            dispatch(addMessage(response.data.messages))
+            const db = getDatabase();
+            get(ref(db), `messages/`).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const { messages } = snapshot.val();
+                    if (!messages) {
+                        dispatch(addMessage([]))
+                        return
+                    }
+                    let messagesArray = [];
+                    for(const [key, value] of Object.entries(messages)) {
+                        if (value.conversation_id === roomId) {
+                            messagesArray.push(value)
+                        }
+                    }
+                    dispatch(addMessage(messagesArray))
+                } else {
+                    return
+                }
+            })
+            .catch((err) => {return err})
             dispatch(loaderOff())
         } catch (e) {
             console.log(e)
@@ -44,14 +63,28 @@ export const getMessages = () => {
     return async dispatch => {
         try {
             dispatch(loaderOn())
-            const response = await axios.get(`${API_URL}api/message/messages`,
-                {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
-            )
-            dispatch(setMessages(response.data.messages))
+            const db = getDatabase();
+            get(ref(db), `messages/`).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const { messages } = snapshot.val();
+                    if (!messages) {
+                        dispatch(setMessages([]))
+                        return
+                    }
+                    let messagesArray = [];
+                    for(const [key, value] of Object.entries(messages)) {
+                        messagesArray.push(value)
+                    }
+                    dispatch(setMessages(messagesArray))
+                } else {
+                    return
+                }
+            })
+            .catch((err) => {return err})
             dispatch(loaderOff())
         } catch (e) {
-            console.log(e)
             dispatch(loaderOff())
+            return e;
         }
     }   
 }
